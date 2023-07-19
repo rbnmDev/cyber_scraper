@@ -15,7 +15,11 @@ class AmazonController{
         const content = await this.scraper.multiScrap(query, pages);
         this.parser = new Parser(content);
         const cards = this.parser.getCardsArray();
+        this.close();
         return cards;
+    }
+    close = async () => {
+        await this.scraper.close();
     }
 }
 
