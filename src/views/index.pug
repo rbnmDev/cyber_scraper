@@ -1,0 +1,26 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+        link(rel="stylesheet", href="/css/style.css")
+    body 
+        h1 Scrapea sin compasión
+        a(href="/scrap") Scrap
+        form(action="/", method="get") 
+            label(for="query") Buscar en la base de datos
+            input(type="text", name="query", id="query")  
+            button(type="submit") Buscar
+        section(id="data")
+            each producto in data 
+                article 
+                    img(src=producto.image)
+                    p
+                        b= producto.title
+                    p= producto.price + "€"
+                    p= "tienda: " 
+                        b= producto.shop 
+                    p= "palabra clave: " 
+                        b= producto.query
+                    a(href=producto.url) Ver producto

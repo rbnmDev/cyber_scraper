@@ -1,7 +1,9 @@
 import Scraper from "../scraper/scraper.js";
 import Parser from "../parser/parser.js";
+import Producto from "../models/producto.js";
 
-class AmazonController{
+
+class TargetController{
     constructor (){
         this.scraper = new Scraper();
         this.parser = null;
@@ -15,12 +17,29 @@ class AmazonController{
         const content = await this.scraper.multiScrap(query, pages);
         this.parser = new Parser(content);
         const cards = this.parser.getCardsArray();
+        this.saveData(query,cards);
         this.close();
         return cards;
     }
+    saveData = async (query,cards) => {
+        for(let card of cards){
+            try{
+                card.shop = "amazon"; 
+                card.query = query; 
+                const producto = new Producto(card);
+                await producto.save();
+            }
+            catch(e){
+                console.log(e);
+            }
+        }
+    }
+
+    
+
     close = async () => {
         await this.scraper.close();
     }
 }
 
-export default AmazonController;
+export default TargetController;

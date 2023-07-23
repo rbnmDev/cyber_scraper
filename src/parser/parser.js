@@ -6,19 +6,19 @@ class Parser {
         this.dom = new JSDOM(this.html);
     }
     getCards = () => {
-        return this.dom.window.document.querySelectorAll(".s-card-container");
+        return this.dom.window.document.querySelectorAll("SELECTOR");
     }
     getTitle = (card) => {
-        return card.querySelector(".a-text-normal").textContent.trim();
+        return card.querySelector("SELECTOR").textContent.trim();
     }
     getPrice = (card) => {
-        return card.querySelector(".a-price-whole").textContent.trim();
+        return card.querySelector("SELECTOR").textContent.trim();
     }
     getImage = (card) => {
-        return card.querySelector(".s-image").getAttribute("src");
+        return card.querySelector("SELECTOR").getAttribute("src");
     }
     getUrl = (card) => {
-        return "https://amazon.es"+card.querySelector("h2 .a-link-normal").getAttribute("href");
+        return "URL!!!!!!!"+card.querySelector("SELECTOR").getAttribute("href");
     }
     getCard = (card) => {
         return {

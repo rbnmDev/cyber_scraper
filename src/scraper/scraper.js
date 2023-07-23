@@ -5,7 +5,7 @@ class Scraper{
         this.browser = null;
         this.page = null;
         this.headless = headless;
-        this.baseURL = new URL("https://www.amazon.es/s");
+        this.baseURL = new URL("URL!!!");
     }
     
     init = async () => {
@@ -16,18 +16,18 @@ class Scraper{
         await this.browser.close();
     }
     scrap = async (query,page) => {
-        this.baseURL.searchParams.set("k", query);
-        this.baseURL.searchParams.set("page", page);
+/*         this.baseURL.searchParams.set("k", query);
+        this.baseURL.searchParams.set("page", page); */
         const url = this.baseURL.toString();
         await this.page.goto(url);
         const content = await this.page.content();
         //await new Promise(resolve => setTimeout(resolve, 5000));
         return content;
     }
-    multiScrap = async (query, pages) => {
+    multiScrap = async (query, pages) => { //Si hace falta
         let content = "";
         for(let i = 1; i <= pages; i++){
-            content += await this.scrap(query, i);
+            content += await this.scrap(query, i); //Si hacen falta
         }
         return content;
     }
