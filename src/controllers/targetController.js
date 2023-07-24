@@ -24,7 +24,7 @@ class TargetController{
     saveData = async (query,cards) => {
         for(let card of cards){
             try{
-                card.shop = "amazon"; 
+                card.shop = "TIENDAobjetivo"; 
                 card.query = query; 
                 const producto = new Producto(card);
                 await producto.save();
