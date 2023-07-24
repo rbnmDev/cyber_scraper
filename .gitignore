@@ -131,3 +131,6 @@ dist
 
 # Mis mierdas de estudiante
 mierdillas.js
+
+# Base de datos Mongo
+data/mongo
