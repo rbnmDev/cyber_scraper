@@ -18,10 +18,7 @@ const productoSchema = new connection.Schema({
         type: String,
         trim: true
     },
-    date: {
-        type: Date,
-        default: Date.now
-    }
+
 },{
     strict: false
 });

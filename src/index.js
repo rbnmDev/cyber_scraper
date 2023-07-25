@@ -5,9 +5,9 @@ const app = express();
 app.get('/', async (req, res) => {
     const targetController = new TargetController();
     await targetController.init();
-    let query  = req.query.query;
-    let pages = 4;
-    const content = await TargetController.getData(query, pages);
+    //let query  = req.query.query;
+    let query = "portatil"
+    const content = await targetController.getData(query);
     res.send(content);
     }
 );
