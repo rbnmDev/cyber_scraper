@@ -13,7 +13,7 @@ class Parser {
         return card.querySelector(".views-field-title").textContent.trim();
     }
     getPrice = (card) => {
-        return card.querySelector(".price-item").getAttribute("content") + "€";
+        return card.querySelector('div.product-price meta[itemprop="price"]').getAttribute('content') + "€";
     }
     getImage = (card) => {
         return "https://www.macnificos.com/" + card.querySelector(".field-image img").getAttribute("src");
@@ -25,7 +25,6 @@ class Parser {
 
     getCard = (card) => {
         return {
-
             title: this.getTitle(card),
             price: this.getPrice(card),
             image: this.getImage(card),
