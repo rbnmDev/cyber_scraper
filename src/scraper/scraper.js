@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 
 class Scraper {
-    constructor(headless = false) {
+    constructor(headless = true) {
         this.browser = null;
         this.page = null;
         this.headless = headless;
@@ -54,9 +54,6 @@ class Scraper {
             return [];
         }
     }
-
-    
-
 }
 
 export default Scraper;

@@ -1,0 +1,204 @@
+/********************** AJUSTES GENERALES *********************/
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+img {
+    width: 100%
+}
+
+:root {
+    --p-font-size: 1.25rem;
+    --button-font-size: 2rem;
+    --line-height: 1.33;
+    --paddingGeneral: 30px;
+    --p-style: Inter;
+    --H-style: Inter;
+}
+
+body {
+    background-color: #111;
+    padding: 20px;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 3rem;
+    font-family: var(--H-style);
+    line-height: 1em;
+    color:#fff;
+    background-image: linear-gradient(45deg,#00c8ff 0%,#ff3a1c 35%,#a76c51 85%,#a76c51 100%);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+    color:#fff;
+    text-decoration: none;
+}
+
+p {
+    font-size: var(--p-font-size);
+    line-height: var(--line-height);
+    font-family: var(--p-style);
+    color: #fff;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+#buscador {
+    display: grid;
+    grid-template-columns: calc(50% - 10px) calc(50% - 10px);
+    position:fixed;
+    flex-direction: row;
+    background-color: #111111ee;
+    padding-top: 20px;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+#titular {
+    margin-bottom: 25px;
+
+}
+
+header form label {
+    display: inline;
+    line-height: var(--line-height);
+    font-family: var(--p-style);
+    font-size: 1.5rem;
+}
+
+input,
+button {
+    font-size: var(--p-font-size);
+    line-height: var(--line-height);
+    font-family: var(--p-style);
+    margin-bottom: 20px;
+    display: inline;
+
+}
+
+
+input {
+    width: calc(50% - 10px);
+    font-size: 1.5rem;
+    padding: 8px 15px;
+    border-radius: 50px;
+    border: none;
+}
+
+button {
+    padding: 6px 25px;
+    background-color: transparent;
+    border: solid 2px;
+    border-radius: 50px;
+    border-color: #fff;
+    color: #fff;
+    margin-right: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: #666;
+}
+
+form label {
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+#container {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #eee;
+}
+
+
+
+#title {
+    color: #111;
+
+}
+
+#price {
+    color: #111;
+
+}
+
+#ver {
+    color: #666;
+    text-align: center;
+    display: inline;
+    font-size: 1rem;
+    line-height: 1rem;
+    font-family: var(--p-style);
+    text-decoration: none;
+    padding: 6px 20px;
+    border: solid 2px;
+    border-color: #666;
+    border-radius: 50px;
+}
+
+#ver:hover {
+    cursor: pointer;
+    background-color: #666;
+    color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+    .cards {
+        width: calc(50% - 10px);
+
+    }
+}
+
+@media screen and (min-width: 1350px) {
+    .cards {
+        width: calc(33% - 10px);
+
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .cards {
+        width: calc(25% - 15px);
+
+    }
+}

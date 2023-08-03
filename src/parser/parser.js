@@ -13,15 +13,25 @@ class Parser {
         return card.querySelector(".views-field-title").textContent.trim();
     }
     getPrice = (card) => {
-        return card.querySelector('div.product-price meta[itemprop="price"]').getAttribute('content') + "€";
+        return card.querySelector('div.product-price meta[itemprop="price"]').getAttribute('content');
     }
     getImage = (card) => {
-        return "https://www.macnificos.com/" + card.querySelector(".field-image img").getAttribute("src");
+        const imgElement = card.querySelector("img.img-responsive");
+        const dataRValue = imgElement.getAttribute("data-r");
+
+        // Convertir la cadena data-r en un objeto JSON
+        const dataRObject = JSON.parse(dataRValue);
+
+        // si no tiene el punto S el dataBoject devuelve un objeto
+        const imageURLFull = dataRObject.s;
+        const urlPrincipio = "https://www.macnificos.com/sites/files/styles/product_list_desktop_1x"
+        const imageURL = `${urlPrincipio}${imageURLFull}`;
+        console.log(imageURL);
+        return imageURL;
     }
     getUrl = (card) => {
         return "https://www.macnificos.com" + card.querySelector(".wrapper-link").getAttribute("href");
     }
-
 
     getCard = (card) => {
         return {
@@ -45,29 +55,9 @@ class Parser {
         }
         return cardsArray;
     }
-
 }
 
 export default Parser;
-
-
-
-
-/* import { JSDOM } from 'jsdom';
-
-class Parser {
-    constructor(html) {
-        this.html = html;
-        this.dom = new JSDOM(this.html);
-    }
-
-    getHtml = () => {
-        return this.dom.window.document.documentElement.outerHTML;
-    }
-
-}
-
-export default Parser; */
 
 
 

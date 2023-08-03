@@ -1,7 +1,9 @@
 import Scraper from "../scraper/scraper.js";
 import Parser from "../parser/parser.js";
 import Producto from "../models/producto.js";
+import dotenv from "dotenv"
 
+dotenv.config()
 
 class TargetController{
     constructor (){
@@ -17,7 +19,9 @@ class TargetController{
         const content = await this.scraper.scrap(query);
         this.parser = new Parser(content);
         const cards = this.parser.getCardsArray();
-        this.saveData(query,cards);
+        if(!process.env.TEST){
+            this.saveData(query,cards);
+        }
         this.close();
         return cards;
     }
@@ -29,6 +33,7 @@ class TargetController{
                 card.query = query; 
                 const producto = new Producto(card);
                 await producto.save();
+                console.log("producto",producto);
             }
             catch(e){
                 console.log(e);
@@ -44,48 +49,3 @@ class TargetController{
 export default TargetController;
 
 
-
-
-
-
-
-/* import Scraper from "../scraper/scraper.js";
-import Parser from "../parser/parser.js";
-
-class TargetController {
-    constructor() {
-        this.scraper = new Scraper();
-        this.parser = null;
-    }
-
-    init = async () => {
-        await this.scraper.init();
-    }
-
-    getData = async (query) => {
-        const content = await this.scraper.scrap(query);
-        this.parser = new Parser(content);
-        const targetHTML = this.parser.getHtml();
-        //const cards = this.parser.getCardsArray();
-        this.saveData(targetHTML);
-        this.close();
-        return targetHTML;
-    }
-
-    saveData = async (targetHTML) => {
-        try {
-
-            await targetHTML.save();
-
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-
-    close = async () => {
-        await this.scraper.close();
-    }
-}
-
-export default TargetController; */

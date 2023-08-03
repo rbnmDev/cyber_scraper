@@ -5,22 +5,20 @@ html(lang="es")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Document
         link(rel="stylesheet", href="/css/style.css")
-    body 
-        h1 Scrapea sin compasión
-        a(href="/scrap") Scrap
-        form(action="/", method="get") 
-            label(for="query") Buscar en la base de datos
-            input(type="text", name="query", id="query")  
-            button(type="submit") Buscar
-        section(id="data")
+    body
+        header(id="buscador")
+            a(href="localhost:3000")
+                h1(id="titular") cyberScraper
+            form(action="/", method="get") 
+                label(for="query") Buscar en Macníficos
+                input(type="text", name="query", id="query")  
+                button(type="submit") Buscar
+        
+        section(id="container")
             each producto in data 
-                article 
+                article(class="cards")
                     img(src=producto.image)
                     p
-                        b= producto.title
-                    p= producto.price + "€"
-                    p= "tienda: " 
-                        b= producto.shop 
-                    p= "palabra clave: " 
-                        b= producto.query
-                    a(href=producto.url) Ver producto
+                        b(id="title")= producto.title
+                    p(id="price")= producto.price + "€"
+                    a(id="ver", href=producto.url, target="_blank") Ver en Macníficos
